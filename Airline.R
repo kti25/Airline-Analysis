@@ -4,7 +4,7 @@ library(tidyverse)
 
 #import files
 getwd()
-setwd("C:/Users/Kevin Rossi/Desktop/R/")
+setwd("C:/Users/Desktop/R/")
 
 q1 = read.csv("q1_16_sample.csv", sep = " ", header = TRUE)
 q11<-data.frame(q1)
