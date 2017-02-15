@@ -35,7 +35,7 @@ dim(new)
 head(new)
 attach(new)
 
-#create new feature: origin and destination state and city names; find a file online to combine with
+#create new feature: origin and destination state and city names
 state = read.csv("states.csv", header = TRUE)
 city = read.csv("airportcity.csv", header = TRUE)
 aero = read.csv("aerodata.csv", header = TRUE)
@@ -48,10 +48,8 @@ names(air4)
 head(air4)
 summary(air4)
 dim(air4)
-#tried including non-us and fixed some of missing - 2751 for dest, 2707 for origin
 
 #new feature: categorical (4 cat.) price features - MARKET_FARE
-#0-<=125,>125-<=250,>250-<=375,>375
 air4$PRICE_CAT <- cut(air4$MARKET_FARE,
                      breaks=c(-Inf, 125, 250, 375, Inf),
                      labels=c("Lowest","Low","Medium","High"))
@@ -63,15 +61,7 @@ dim(x)
 f<-filter(x, x$freq> 1)
 dim(f)
 
-#how often did ticket carrier change? (op_carrier_change)
-# binary - change if 1, no change if not. count how many their were total
+#how often did ticket carrier change?
 w = table(air4$OP_CARRIER_CHANGE)
 w
-
-#run basic discriptive stats and provide one unique insight
-summary(air4)
-dim(air4)
-head(air4)
-str(air4)
-#people who have "bulk_fare" do not pay anything for "market_fare" 
 
